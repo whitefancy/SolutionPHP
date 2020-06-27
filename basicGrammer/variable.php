@@ -88,3 +88,27 @@ function myTest4($x)
 myTest4(5);
 
 ?>
+<?php
+//NULL 值表示变量没有值。NULL 是数据类型为 NULL 的值。
+//
+//NULL 值指明一个变量是否为空值。 同样可用于数据空值和NULL值的区别。
+//
+//可以通过设置变量值为 NULL 来清空变量数据：
+$x="Hello world!";
+$x=null;
+var_dump($x);
+//常量是一个简单值的标识符（名字）。常量值被定义后，在脚本的其他任何地方都不能被改变。
+// 区分大小写的常量名 常量是全局的
+//常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。
+define("GREETING", "欢迎访问 php.cn");
+echo GREETING; // 输出 "欢迎访问 php.cn"
+echo '<br>';
+echo greeting; // 输出 "greeting"
+?>
+<?php
+function myTest5() {
+    echo GREETING;
+}
+
+myTest5();    // 输出 "欢迎访问 php.cn"
+
