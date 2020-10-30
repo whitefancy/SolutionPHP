@@ -17,9 +17,9 @@ echo "<br>";
 echo "My car is a {$cars[0]}";
 ?>
 <?php
-$txt1="Learn PHP";
-$txt2="www.php.cn";
-$cars=array("Volvo","BMW","Toyota");
+$txt1 = "Learn PHP";
+$txt2 = "www.php.cn";
+$cars = array("Volvo", "BMW", "Toyota");
 
 print $txt1;
 print "<br>";
@@ -42,11 +42,12 @@ $x = 8E-5;
 var_dump($x);
 //布尔型可以是 TRUE 或 FALSE。
 echo '<br>';
-$x=true;
-$y=false;
+$x = true;
+$y = false;
 //PHP 数组
 //数组可以在一个变量中存储多个值。
 // PHP var_dump() 函数返回数组的数据类型和值：
-$cars=array("Volvo","BMW","Toyota");
+$cars = array("Volvo", "BMW", "Toyota");
 var_dump($cars);
+
 ?>

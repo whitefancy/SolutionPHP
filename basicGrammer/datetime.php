@@ -82,3 +82,11 @@ $date2 = new DateTime('2014-09-15');
 
 $diff = $date1->diff($date2);
 echo $diff->format("The future will come in %Y years %m months and %d days");
+
+
+echo gmdate("ymd");
+
+echo '\n';
+date_default_timezone_set("Etc/GMT-7");
+echo date("ymd");
+echo (new DateTime())->format('Y-m-d H:i:s');
