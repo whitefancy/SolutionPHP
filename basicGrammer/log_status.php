@@ -20,5 +20,68 @@ function writeLog($logLevel, $class, $method, $message, $serverName = PAY_LOG_NA
     file_put_contents($filename_path, $logString, FILE_APPEND);
 }
 
+define("PAY_LOG_NAME", "pay_log");
+define("ACCOUNT_LOG_NAME", "account_log");
+define('OPERATION_LOG_NAME', 'operation_log');
+define('DATABASE_LOG_NAME', 'database_log');
+define("REQUEST_ID", session_create_id());
+
+class Logger
+{
+    /**
+     * 日志格式
+     * 时间戳 | 请求id | 日志级别 | [ 文件名/类名， 函数名/方法名] | 日志信息
+     *2021-07-23 09:23:06 | cm8nng7em38tdsd505q6m0hv5m | warning |[ mysql_service , sql_connect ]| Access denied for user 'root1'@'172.18.0.1' (using password: YES)
+     * @param $logLevel 日志级别
+     * @param $class 文件名/类名
+     * @param $method 函数名/方法名
+     * @param $message 日志信息
+     * @param string $serverName 日志类型
+     */
+    private static function writeLog($logLevel, $class, $method, $message, $serverName = PAY_LOG_NAME)
+    {
+        if (DEBUG_MODE == 0 && 'debug' == $logLevel) {
+            return;
+        }
+        $logString = date('Y-m-d H:i:s') . ' | ' . REQUEST_ID . ' | ' . $logLevel . ' |[ ' . $class . ' , ' . $method . ' ]| ' . $message . "\n";
+        $path = LOG_ROOT . date('Ym') . '/' . $serverName;
+        if (is_dir($path) || mkdir($path, 0777, true)) {
+            if ('info' == $logLevel || 'debug' == $logLevel) {
+                $filename_path = $path . '/' . $serverName . '_' . date('Ymd') . '.log';
+            } else {
+                $filename_path = $path . '/' . $serverName . '_' . $logLevel . '.log';
+            }
+            file_put_contents($filename_path, $logString, FILE_APPEND);
+        }
+    }
+
+    static function logError($class, $method, $message, $serverName)
+    {
+        Logger::writeLog('error', $class, $method, $message, $serverName);
+    }
+
+    static function logWarning($class, $method, $message, $serverName)
+    {
+        Logger::writeLog('warning', $class, $method, $message, $serverName);
+    }
+
+    static function logInfo($class, $method, $message, $serverName)
+    {
+        Logger::writeLog('info', $class, $method, $message, $serverName);
+    }
+
+    static function logDebug($class, $method, $message, $serverName)
+    {
+        Logger::writeLog('debug', $class, $method, $message, $serverName);
+    }
+
+    static function logIp()
+    {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? $_SERVER['HTTP_CLIENT_IP'] ?? '';
+        Logger::writeLog('info', "request", "ip", $ip, PAY_LOG_NAME);
+    }
+}
+
+
 Logger::logInfo(basename(__FILE__, ".php"), "response", "d", PAY_LOG_NAME);
 Logger::logInfo(__CLASS__, __METHOD__, "d", PAY_LOG_NAME);

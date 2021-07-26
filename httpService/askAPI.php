@@ -1,11 +1,11 @@
 <?php
 /**
  * [http 调用接口函数]
- * @param  string       $url     [接口地址]
- * @param  array        $params  [数组]
- * @param  string       $method  [GET\POST\DELETE\PUT]
- * @param  array        $header  [HTTP头信息]
- * @param  integer      $timeout [超时时间]
+ * @param string $url [接口地址]
+ * @param array $params [数组]
+ * @param string $method [GET\POST\DELETE\PUT]
+ * @param array $header [HTTP头信息]
+ * @param integer $timeout [超时时间]
  * @return [type]                [接口返回数据]
  */
 function http($url, $params, $method = 'GET', $header = array(), $timeout = 5)
@@ -52,5 +52,6 @@ function http($url, $params, $method = 'GET', $header = array(), $timeout = 5)
     $data = curl_exec($ch);
     $error = curl_error($ch);
     echo $error;
+    curl_close($ch);
     return $data;
 }
