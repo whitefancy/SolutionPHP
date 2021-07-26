@@ -1,4 +1,14 @@
 <?php
+//php数据类型包括String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。
+//整型可以用三种格式来指定：十进制， 十六进制（ 以 0x 为前缀）或八进制（前缀为 0）。
+$x = 10.365;
+$x = 2.4e3;
+$x = 8E-5;
+$x = true;
+$y = false;
+//PHP var_dump() 函数返回变量的数据类型和值：
+var_dump($x);
+
 //abs-绝对值
 //acos —反余弦
 //acosh —反双曲余弦

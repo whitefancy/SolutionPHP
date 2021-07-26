@@ -4,29 +4,16 @@
 #输出
 echo("Hello world!"); #输出一个或多个字符串。
 
-#fprintf() 把格式化的字符串写入到指定的输出流。
-if (!($fp = fopen('currency.txt', 'w'))) {
-    return;
-}
-
-$money1 = 68.75;
-$money2 = 54.35;
-$money = $money1 + $money2;
-// echo $money will output "123.1";
-$len = fprintf($fp, '%01.2f', $money);
-// will write "123.10" to currency.txt
-
-echo "wrote $len bytes to currency.txt";
 
 #print() 输出一个或多个字符串。
 $foo = "example";
 print "foo is $foo";
 
-if ( print "hello" ) {
+if (print "hello") {
     echo " world";
 }
 #printf() 输出格式化的字符串。
-$n =  43951789;
+$n = 43951789;
 $u = -43951789;
 $c = 65; // ASCII 65 is 'A'
 
@@ -50,7 +37,8 @@ printf("%%+d = '%+d'\n", $u); // sign specifier on a negative integer
 //chop() 删除字符串右侧的空白字符或其他字符。
 //stripos() 返回字符串在另一字符串中第一次出现的位置（对大小写不敏感）。
 //stristr() 查找字符串在另一字符串中第一次出现的位置（大小写不敏感）。
-//substr_count() 计算子串在字符串中出现的次数。
+//substr_count() 计算子串在字符串中出现的次数
+echo substr_count("2021-07-25 05:44:11", "-");#2
 //strpbrk() 在字符串中查找一组字符的任何一个字符。
 //strpos() 返回字符串在另一字符串中第一次出现的位置（对大小写敏感）。
 //strrchr() 查找字符串在另一个字符串中最后一次出现。
