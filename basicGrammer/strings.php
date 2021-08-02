@@ -69,6 +69,7 @@ echo substr_count("2021-07-25 05:44:11", "-");#2
 
 //类型转换
 //explode() 把字符串打散为数组。
+explode('&', $paramarr['query'])
 //chr() 从指定的 ASCII 值返回字符。
 //strtok() 把字符串分割为更小的字符串。
 //hex2bin() 把十六进制值的字符串转换为 ASCII 字符。

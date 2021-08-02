@@ -11,9 +11,12 @@ function json2form($val1)
 
 function json2form1($val1)
 {
-    $val1 = json_decode($val1);
-    foreach ($val1 as $k => $v) {
-        echo $k . ':' . $v . "\n";
+    $params = json_decode($val1, true);
+    $keys = array_keys($params);
+    $values = array_values($params);
+    $size = count($params);
+    for ($i = 0; $i < $size; ++$i) {
+        echo $keys[$i] . ':' . $values[$i] . "\n";
     }
 }
 

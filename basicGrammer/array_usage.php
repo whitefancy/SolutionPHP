@@ -195,6 +195,13 @@ print_r($top);// [1, 2, 3]
 //list() 函数在单次操作中将数组中的值赋值给一组变量。list () 语言结构仅适用于数字索引数组，并默认索引从 0 开始，且无法用于关联数组，这个语言结构结合 preg_split() 或 explode() 这类函数使用效果更佳，如果你无需定义其中的某些值，可以直接跳过一些参数的赋值
 //extract() 函数将关联数组导出到变量（符号表）中。注意在处理用户数据（如请求的数据）时 extract() 函数是一个安全的函数，所以此时最好使用更好的 标志类型 如 EXTR_IF_EXISTS 和 EXTR_PREFIX_ALL。
 //extract() 函数的逆操作是 compact() 函数，用于通过变量名创建关联数组：
+$firstname = "Peter";
+$lastname = "Griffin";
+$age = "41";
+
+$result = compact("firstname", "lastname", "age");
+
+print_r($result);
 //依据模型数组创建 id 和 title 数据字典，我们可以结合使用 array_combine() 和 array_column() 函数：
 $models = [$model, $model, $model];
 $id_to_title = array_combine(
